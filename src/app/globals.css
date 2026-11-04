@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* === АДМИН ПАНЕЛЬ: Газетный стиль === */
+.admin-content input[type="text"],
+.admin-content input[type="email"],
+.admin-content input[type="password"],
+.admin-content input[type="number"],
+.admin-content select,
+.admin-content textarea {
+  width: 100%;
+  border: 1px solid #D5D5D5;
+  padding: 8px 12px;
+  background-color: #FFFFFF;
+  color: #111111;
+  border-radius: 0; /* Убираем закругления */
+}
+.admin-content input:focus,
+.admin-content select:focus,
+.admin-content textarea:focus {
+  outline: none;
+  border-color: #111111;
+}
+.admin-content button[type="submit"],
+.admin-content .btn-primary {
+  background-color: #111111;
+  color: #FFFFFF;
+  padding: 10px 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.875rem;
+  border-radius: 0;
+  transition: background-color 0.2s;
+}
+.admin-content button[type="submit"]:hover,
+.admin-content .btn-primary:hover {
+  background-color: #333333;
+}
+.admin-content table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #FFFFFF;
+  border: 1px solid #111111;
+}
+.admin-content th {
+  background-color: #F5F5F3;
+  color: #111111;
+  text-align: left;
+  padding: 12px;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border-bottom: 1px solid #111111;
+}
+.admin-content td {
+  padding: 12px;
+  border-bottom: 1px solid #D5D5D5;
+  color: #111111;
+}

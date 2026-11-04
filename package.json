@@ -1,0 +1,38 @@
+{
+  "name": "cortum",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@prisma/client": "^5.22.0",
+    "autoprefixer": "^10.5.0",
+    "bcryptjs": "^3.0.3",
+    "jose": "^6.2.3",
+    "next": "^16.2.6",
+    "postcss": "^8.5.15",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6",
+    "react-markdown": "^10.1.0",
+    "recharts": "^3.9.2",
+    "remark-gfm": "^4.0.1",
+    "resend": "^6.17.2"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "@types/node": "^25.9.1",
+    "@types/react": "^19.2.15",
+    "prisma": "^5.22.0",
+    "tailwindcss": "^3.4.17",
+    "ts-node": "^10.9.2",
+    "typescript": "^6.0.3"
+  }
+}

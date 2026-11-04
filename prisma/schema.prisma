@@ -1,0 +1,101 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Category {
+  id                       String                   @id @default(uuid())
+  slug                     String                   @unique
+  name                     String
+  description              String?
+  news                     News[]
+  subscriptionCategories   SubscriptionCategory[]
+}
+
+model News {
+  id         String    @id @default(uuid())
+  title      String
+  slug       String    @unique
+  summary    String
+  body       String
+  imageUrl   String?
+  categoryId String
+  category   Category  @relation(fields: [categoryId], references: [id])
+  published  Boolean   @default(false)
+  featured   Boolean   @default(false)
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+}
+
+model Analytics {
+  id        String   @id @default(uuid())
+  title     String
+  slug      String   @unique
+  summary   String
+  body      String
+  imageUrl  String?
+  published Boolean  @default(false)
+  featured  Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model User {
+  id           String   @id @default(uuid())
+  email        String   @unique
+  passwordHash String
+  role         String   @default("editor")
+}
+
+model EmailSubscription {
+  id               String                   @id @default(uuid())
+  email            String                   @unique
+  isActive         Boolean                  @default(true)
+  confirmedAt      DateTime?
+  unsubscribeToken String?
+  createdAt        DateTime                 @default(now())
+  categories       SubscriptionCategory[]
+}
+
+model SubscriptionCategory {
+  subscriptionId String
+  subscription   EmailSubscription @relation(fields: [subscriptionId], references: [id], onDelete: Cascade)
+  categoryId     String
+  category       Category          @relation(fields: [categoryId], references: [id])
+  @@id([subscriptionId, categoryId])
+}
+
+model Company {
+  id          String    @id @default(uuid())
+  ticker      String    @unique
+  name        String
+  sector      String
+  description String?
+  dataYear    Int?
+  revenue     Float?
+  ebitda      Float?
+  netIncome   Float?
+  totalDebt   Float?
+  marketCap   Float?
+  updatedAt   DateTime  @updatedAt
+  ratings     Rating[]
+}
+
+model Rating {
+  id          String   @id @default(uuid())
+  title       String
+  description String?
+  methodology String?
+  sources     String?
+  type        String   @default("Прочее")
+  data        String   @default("[]")
+  imageUrl    String?
+  companyId   String?
+  company     Company? @relation(fields: [companyId], references: [id], onDelete: Cascade)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
